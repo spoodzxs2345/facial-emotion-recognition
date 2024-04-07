@@ -1,3 +1,4 @@
 tensorflow==2.9
 deepface
 ultralytics
+protobuf==3.19.4
