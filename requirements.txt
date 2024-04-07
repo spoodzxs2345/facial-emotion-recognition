@@ -1,4 +1,5 @@
 tensorflow==2.9
+opencv-python-headless
 deepface
 ultralytics
 protobuf==3.19.4
