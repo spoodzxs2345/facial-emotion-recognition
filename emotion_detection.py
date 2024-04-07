@@ -2,24 +2,15 @@ from ultralytics import YOLO
 from ultralytics.engine.results import Results
 from deepface import DeepFace
 import cv2
-import streamlit as st
 
 # enable the camera to capture the video feed
 cap = cv2.VideoCapture(0)
 
-st.title('Emotion Detection using YOLOv8 and DeepFace')
-
-frame_placeholder = st.empty()
-
-stop_btn = st.button('Stop')
-
 # load the YOLO model
 model = YOLO('C:/Users/Delsie/Desktop/projects/FER/yolov8n-face_openvino_model') # update the path to the model
 
-while True and not stop_btn:
+while True and:
     ret, frame = cap.read()
-
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     if ret:
         # detect for faces in the frame
@@ -46,12 +37,10 @@ while True and not stop_btn:
             cv2.putText(frame, emotion, (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
         # show the feed
-        #cv2.imshow('feed', frame)
-        frame_placeholder.image(frame, channels='RGB')
+        cv2.imshow('feed', frame)
     
     key = cv2.waitKey(1)
-    if key == ord('q') or stop_btn: # press 'q' to terminate the program
-        st.write('Program terminated')
+    if key == ord('q'): # press 'q' to terminate the program
         break
 
 cap.release()
