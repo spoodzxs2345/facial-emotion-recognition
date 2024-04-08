@@ -9,7 +9,7 @@ cap = cv2.VideoCapture(0)
 # load the YOLO model
 model = YOLO('C:/Users/Delsie/Desktop/projects/FER/yolov8n-face_openvino_model') # update the path to the model
 
-while True and:
+while True:
     ret, frame = cap.read()
 
     if ret:
